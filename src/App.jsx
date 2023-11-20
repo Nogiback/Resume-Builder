@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './styles/App.css'
+import './styles/main.scss'
 
 function App() {
   const [count, setCount] = useState(0);
 
   function setCountHandler() {
-    setCount((count) => count + 1);
+    setCount(count + 1);
   }
 
   return (
