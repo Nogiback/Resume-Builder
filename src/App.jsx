@@ -1,20 +1,13 @@
-import { useState } from 'react'
-import './styles/main.scss'
+import Header from './components/Header.jsx'
+import Content from './components/Content.jsx'
+import Footer from './components/Footer.jsx'
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  function setCountHandler() {
-    setCount(count + 1);
-  }
-
+export default function App() {
   return (
     <>
-      <button onClick={() => setCountHandler()}>
-        Count Is {count}
-      </button>
+      <Header />
+      <Content />
+      <Footer />
     </>
-  )
+  );
 }
-
-export default App
