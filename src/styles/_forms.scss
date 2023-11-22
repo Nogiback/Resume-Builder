@@ -1,43 +1,76 @@
+.forms {
+  @include flex(column, center, center);
+  gap: 1rem;
+ 
+}
+
 input {
-  padding: 0.5rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 10px;
   font-size: 0.9rem;
+  background-color: $grey;
+  color: $lightergrey;
+  width: calc(100% - 16px);
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: weight(bold);
-  line-height: 1.6;
 }
 
 textarea {
   resize: none;
   padding: 0.5rem;
   font-size: 0.9rem;
+  border-radius: 10px;
+  background-color: $grey;
+  color: $lightergrey;
 }
 
-.personal-info-form-container {
-  @include flex(column, center, center);
-  gap: 10px;
-  background-color: $card;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+button {
+  margin-top: 0.5rem;
+  padding: 5px;
+  background-color: $teal;
+  color: $black;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid $teal;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    color: $teal;
+    background-color: $black;
+  }
+
+  &:active {
+    top: 2px;
+  }
+}
+
+.form-container {
+  @include flex(column, space-between, center);
+  gap: 0.5rem;
   width: 500px;
+  background-color: $card;
+  box-shadow: $darkershadow;
+  padding: 1.5rem;
   border-radius: 10px;
 }
 
-.personal-info-form {
-  @include flex(column, center, center);
-  gap: 10px;
-  
-  input {
-    width: calc(100% - 16px);
-  }
+.form {
+  @include flex(column, space-between, center);
+  gap: 0.5rem;
 }
 
 .personal-info-name,
 .personal-info-contact {
   @include flex(row, center, center);
-  gap: 10px;
+  gap: 0.5rem;
   width: 100%;
+}
+
+#add-education-btn,
+#add-experience-btn {
+  width: 60px;
 }

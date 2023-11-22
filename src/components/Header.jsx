@@ -1,8 +1,8 @@
 export default function Header() {
   return (
-    <header className='header'>
+    <header>
       <div className='title'>
-        <h1 className="site-name">Resume Builder</h1>
+        <h1 className="site-name"><i className="fa-solid fa-file"></i> Resume Builder</h1>
       </div>
     </header>
   );

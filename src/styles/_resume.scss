@@ -1,0 +1,13 @@
+.resume-preview {
+  @include flex(column, center, flex-start);
+  gap: 1rem;
+  position: relative;
+}
+
+.resume-page {
+  background-color: $lightgrey;
+  width: 610px;
+  height: calc(610px * 1.29411764706);
+  position: sticky;
+  top: 3rem;
+}
