@@ -15,15 +15,95 @@ export default function Content() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [website, setWebsite] = useState('');
   const [interests, setInterests] = useState('');
+  const [education, setEducation] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [skills, setSkills] = useState('');
 
-  // const [education, setEducation] = useState([]);
-  // const [experience, setExperience] = useState([]);
-  // const [skills, setSkills] = useState('');
+
+  function addEducation(e) {
+    e.preventDefault()
+    if (education.length === 3) return;
+    const id = uuidv4();
+    const degree = e.target[0].value;
+    const school = e.target[1].value;
+    const location = e.target[2].value;
+    const startDate = e.target[3].value;
+    const gradDate = e.target[4].value;
+    const newEducation = { id, degree, school, location, startDate, gradDate };
+    setEducation([...education, newEducation]);
+    e.target.reset();
+  }
+
+  function deleteEducation(id) {
+    setEducation((currentEducation) => {
+      return currentEducation.filter((data) => data.id !== id);
+    });
+  }
+
+  function updateEducation(e, id) {
+    e.preventDefault();
+    const degree = e.target[0].value;
+    const school = e.target[1].value;
+    const location = e.target[2].value;
+    const startDate = e.target[3].value;
+    const gradDate = e.target[4].value;
+    const updatedEducation = { degree, school, location, startDate, gradDate };
+
+    setEducation(
+      education.map((data) => {
+        if (data.id === id) {
+          return {...data, ...updatedEducation};
+        } else {
+          return data;
+        }
+      })
+    );
+  }
+
+  function addExperience(e) {
+    e.preventDefault()
+    if (experience.length === 5) return;
+    const id = uuidv4();
+    const company = e.target[0].value;
+    const position = e.target[1].value;
+    const location = e.target[2].value;
+    const startDate = e.target[3].value;
+    const endDate = e.target[4].value;
+    const newExperience = { id, company, position, location, startDate, endDate };
+    setExperience([...experience, newExperience]);
+    e.target.reset();
+  }
+
+  function deleteExperience(id) {
+    setExperience((currentExperience) => {
+      return currentExperience.filter((data) => data.id !== id);
+    });
+  }
+
+  function updateExperience(e, id) {
+    e.preventDefault();
+    const company = e.target[0].value;
+    const position = e.target[1].value;
+    const location = e.target[2].value;
+    const startDate = e.target[3].value;
+    const endDate = e.target[4].value;
+    const updatedExperience= { company, position, location, startDate, endDate };
+
+    setExperience(
+      experience.map((data) => {
+        if (data.id === id) {
+          return {...data, ...updatedExperience};
+        } else {
+          return data;
+        }
+      })
+    );
+  }
 
   return (
     <>
       <div className='content'>
-        <section className='forms'>
+        <section className='forms-section'>
           <PersonalInfo 
             changeFirstName={setFirstName}
             changeLastName={setLastName}
@@ -35,8 +115,18 @@ export default function Content() {
             changeBio={setBio}
             changeInterests={setInterests}
            />
-          <Education />
-          <Experience />
+          <Education 
+            education={education}
+            addEducation={addEducation}
+            deleteEducation={deleteEducation}
+            updateEducation={updateEducation}
+          />
+          <Experience 
+            experience={experience}
+            addExperience={addExperience}
+            deleteExperience={deleteExperience}
+            updateExperience={updateExperience}
+          />
         </section>
         <section className='resume-preview'>
           <Resume

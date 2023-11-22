@@ -1,7 +1,6 @@
-.forms {
+.forms-section {
   @include flex(column, center, center);
   gap: 1rem;
- 
 }
 
 input {
@@ -14,8 +13,9 @@ input {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: weight(bold);
+  margin-bottom: -5px;
 }
 
 textarea {
@@ -48,9 +48,13 @@ button {
   }
 }
 
+li {
+  list-style: none;
+}
+
 .form-container {
   @include flex(column, space-between, center);
-  gap: 0.5rem;
+  gap: 1.5rem;
   width: 500px;
   background-color: $card;
   box-shadow: $darkershadow;
@@ -70,7 +74,26 @@ button {
   width: 100%;
 }
 
-#add-education-btn,
-#add-experience-btn {
+.add-btn{
   width: 60px;
+}
+
+#education-header,
+#experience-header {
+  @include flex(row, center, space-between);
+  font-weight: weight(bold);
+}
+
+#button-container {
+  @include flex(row, center, center);
+  gap: 0.5rem;
+}
+
+.update-btn,
+.delete-btn {
+  font-size: 1rem;
+  width: 20px;
+  height: 20px;
+  line-height: 0;
+  margin: 0;
 }
