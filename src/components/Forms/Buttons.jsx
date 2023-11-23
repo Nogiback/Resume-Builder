@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Buttons({ loadExample, resetForms }){
   const [selectedColor, setSelectedColor] = useState('#1DD7E1');
