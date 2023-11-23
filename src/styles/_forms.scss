@@ -54,6 +54,30 @@ li {
   border-radius: 10px;
 }
 
+#buttons-container {
+  @include flex(row, center, center);
+  gap: 1rem;
+
+  input[type=color] {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+  }
+
+  button {
+    background-color: var(--custom-color);
+    color: $black;
+    border: 2px solid var(--custom-color);
+    margin: 0;
+
+    &:hover {
+      color: var(--custom-color);
+      background-color: $black;
+  }
+  }
+  
+}
+
 .form {
   @include flex(column, space-between, center);
   gap: 0.5rem;
@@ -124,4 +148,14 @@ li {
     gap: 0.5rem;
   }
   
+  #buttons-container {
+    font-size: 0.8rem;
+
+    input[type=color] {
+      width: 60px;
+    }
+    
+    
+  }
+
 }

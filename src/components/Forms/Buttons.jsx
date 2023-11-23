@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Buttons(){
+export default function Buttons({ loadExample, resetForms }){
   const [selectedColor, setSelectedColor] = useState('#1DD7E1');
 
   function handleColorChange(e) {
@@ -12,17 +12,19 @@ export default function Buttons(){
     for (const element of elements) {
       element.style.setProperty('--custom-color', e.target.value);
     }
-
   };
 
   return (
     <div className='form-container' id='buttons-container'>
-      {/* Color picker input */}
+      <label htmlFor='color-picker'>Pick an accent color :</label>
       <input
-        type="color"
+        type='color'
+        id='color-picker'
         value={selectedColor}
         onChange={handleColorChange}
       />
+      <button onClick={loadExample} className='custom' type='button' id='example-btn'>Load Example</button>
+      <button onClick={resetForms} className='custom' type='button' id='reset-btn'>Reset Forms</button>
     </div>
   );
 };
