@@ -15,7 +15,7 @@ export default function PersonalInfo({ changeFirstName, changeLastName, changePh
           <input onChange={(e) => changeLocation(e.target.value)} type='text' name='location' placeholder='Location' required />
           <input onChange={(e) => changeCurrentPosition(e.target.value)} type='text' name='current-position' placeholder='Current Position' required />
           <input onChange={(e) => changeWebsite(e.target.value)} type='text' name='website' placeholder='Website' required/>
-          <textarea onChange={(e) => changeBio(e.target.value)} type='text' name='bio' placeholder='Tell us about yourself...' maxLength={500} required></textarea>
+          <textarea onChange={(e) => changeBio(e.target.value)} type='text' name='bio' placeholder='Write a short bio...' maxLength={250} required></textarea>
           <h2>Interests</h2>
           <textarea onChange={(e) => changeInterests(e.target.value)} type='text' name='interests' placeholder='Hiking, basketball, movies, etc...' maxLength={500} required></textarea>
         </form>

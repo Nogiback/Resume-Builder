@@ -69,7 +69,8 @@ export default function Content() {
     const location = e.target[2].value;
     const startDate = e.target[3].value;
     const endDate = e.target[4].value;
-    const newExperience = { id, company, position, location, startDate, endDate };
+    const desc = e.target[5].value;
+    const newExperience = { id, company, position, location, startDate, endDate, desc };
     setExperience([...experience, newExperience]);
     e.target.reset();
   }
@@ -82,12 +83,13 @@ export default function Content() {
 
   function updateExperience(e, id) {
     e.preventDefault();
-    const company = e.target[0].value;
-    const position = e.target[1].value;
-    const location = e.target[2].value;
-    const startDate = e.target[3].value;
-    const endDate = e.target[4].value;
-    const updatedExperience= { company, position, location, startDate, endDate };
+    const company = e.target[2].value;
+    const position = e.target[3].value;
+    const location = e.target[4].value;
+    const startDate = e.target[5].value;
+    const endDate = e.target[6].value;
+    const desc = e.target[7].value;
+    const updatedExperience= { company, position, location, startDate, endDate, desc };
 
     setExperience(
       experience.map((data) => {
@@ -126,6 +128,7 @@ export default function Content() {
             addExperience={addExperience}
             deleteExperience={deleteExperience}
             updateExperience={updateExperience}
+            changeSkills={setSkills}
           />
         </section>
         <section className='resume-preview'>
@@ -139,6 +142,9 @@ export default function Content() {
             website={website}
             bio={bio}
             interests={interests}
+            education={education}
+            experience={experience}
+            skills={skills}
           /> 
         </section>
       </div>

@@ -1,4 +1,4 @@
-export default function Experience({ experience, addExperience, deleteExperience, updateExperience }) {
+export default function Experience({ experience, addExperience, deleteExperience, updateExperience, changeSkills }) {
   return (
     <>
       <div className='form-container' id='experience-form-container'>
@@ -19,6 +19,7 @@ export default function Experience({ experience, addExperience, deleteExperience
                 <input type='text' name='company-location' defaultValue={data.location} required/>
                 <input type='text' name='start-date' defaultValue={data.startDate} required/>
                 <input type='text' name='end-date' defaultValue={data.endDate} required/>
+                <textarea type='text' name='description' defaultValue={data.desc} maxLength={750} required></textarea>
               </form>
             </li>
           );
@@ -29,11 +30,12 @@ export default function Experience({ experience, addExperience, deleteExperience
           <input type='text' name='company-location' placeholder='Location' required/>
           <input type='text' name='start-date' placeholder='Start Date' required/>
           <input type='text' name='end-date' placeholder='End Date' required/>
+          <textarea type='text' name='description' placeholder='Description' maxLength={800} required></textarea>
           <button type='submit' className='add-btn' >+ Add</button>
         </form>
         <form className='form' id='skills-form-container'>
         <h2>Skills</h2>
-          <textarea type='text' name='interests' placeholder='HTML, CSS, Javascript, React, etc...' maxLength={500} required></textarea>
+          <textarea onChange={(e) => changeSkills(e.target.value)} type='text' name='interests' placeholder='HTML, CSS, Javascript, React, etc...' maxLength={500} required></textarea>
         </form>
       </div>
     </>
