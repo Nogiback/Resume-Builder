@@ -3,11 +3,11 @@ export default function SidebarPreview({skills, education, interests}) {
     <>
       <div className='resume-container' id='sidebar-preview'>
         <div id='skills-container'>
-          <h3>S K I L L S</h3>
+          <h3 className='custom'>S K I L L S</h3>
           <p>{skills}</p>
         </div>
         <div id='education-container'>
-        <h3>E D U C A T I O N</h3>
+        <h3 className='custom'>E D U C A T I O N</h3>
         {education.map((data) => {
           return (
             <li key={data.id} className='education-entry'>
@@ -20,7 +20,7 @@ export default function SidebarPreview({skills, education, interests}) {
         })}
         </div>
         <div id='interests-container'>
-          <h3>I N T E R E S T S</h3>
+          <h3 className='custom'>I N T E R E S T S</h3>
           <p>{interests}</p>
         </div>
       </div>

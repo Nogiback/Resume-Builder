@@ -26,7 +26,7 @@
     font-size: 2.5rem;
     font-weight: weight(bold);
     line-height: 1.3;
-    color: $text-teal;
+    color: var(--custom-color);
   }
 
   h2 {
@@ -36,7 +36,7 @@
   }
 
   h3 {
-    color: $text-teal;
+    color: var(--custom-color);
     font-size: 1rem;
     font-weight: weight(bold);
   }
@@ -120,10 +120,69 @@
   font-size: 0.8rem;
 }
 
-#edu-date-label {
+#edu-date-label,
+#location-label {
   font-size: 0.8rem;
 }
 
-#location-label {
-  font-size: 0.8rem;
+@media only screen and (max-width: 700px){
+  .resume-page {
+    font-size: 6px;
+    grid-template-columns: 1fr 90px;
+    width: 300px;
+    height: calc(300px * 1.29411764706);
+    padding: 1.6rem;
+
+    h1 {
+      font-size: 1rem;
+    }
+  
+    h2 {
+      font-size: 0.7rem;
+    }
+  
+    h3 {
+      font-size: 0.5rem;
+    }
+  
+    p {
+      font-size: 6px;
+    }
+  }
+
+  #company-label,
+  #exp-date-label {
+    font-size: 10px;
+  }
+
+  #position-label {
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+
+  #desc-text {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+
+  #school-label {
+    font-size: 8px;
+  }
+
+  #degree-label {
+    font-size: 8px;
+  }
+
+  #edu-date-label,
+  #location-label {
+    font-size: 8px;
+  }
+  
+}
+
+@media only screen and (max-width: 420px){
+  .resume-page {
+    width: 280px;
+    height: calc(280px * 1.29411764706);
+  }
 }

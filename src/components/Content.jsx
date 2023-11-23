@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Buttons from './Forms/Buttons';
 import PersonalInfo from './Forms/PersonalInfo';
 import Education from './Forms/Education';
 import Experience from './Forms/Experience';
@@ -106,6 +107,7 @@ export default function Content() {
     <>
       <div className='content'>
         <section className='forms-section'>
+          <Buttons/>
           <PersonalInfo 
             changeFirstName={setFirstName}
             changeLastName={setLastName}

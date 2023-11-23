@@ -6,8 +6,6 @@ $card: rgb(26, 31, 39);
 $clear: rgba(0, 0, 0, 0); 
 $black: rgb(34, 40, 49);
 $grey: rgb(57, 62, 70);
-$teal: rgb(29, 215, 225);
-$text-teal: rgb(29, 200, 200);
 $lightgrey: rgb(225, 223, 223);
 $lightergrey: rgb(240, 240, 240);
 $primary-font: 'Urbanist', sans-serif;
@@ -40,6 +38,7 @@ $font-weights: (
   box-sizing: inherit;
   scroll-behavior: smooth;
   scroll-padding-top: 1rem;
+  --custom-color: #1DD7E1;
 }
 
 body {
@@ -65,7 +64,7 @@ header {
   margin-bottom: 1rem;
 
   i {
-    color: $teal;
+    color: var(--custom-color);
   }
 }
 
@@ -82,8 +81,8 @@ footer {
   background: $card;
   margin-top: 1rem;
 
-    a {
-      color: $teal;
+    i {
+      color: var(--custom-color);
     }
 }
 

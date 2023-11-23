@@ -10,8 +10,8 @@ export default function Experience({ experience, addExperience, deleteExperience
               <div id='experience-header'>
                 <h3>Work Experience # {index + 1}</h3>
                 <div id='button-container'>
-                  <button type='submit' className='update-btn'><i className="fa-solid fa-floppy-disk"></i></button>
-                  <button onClick={() => deleteExperience(data.id)} type='button' className='delete-btn'><i className="fa-solid fa-trash-can"></i></button>
+                  <button type='submit' className='update-btn'><i className='fa-solid fa-floppy-disk'></i></button>
+                  <button onClick={() => deleteExperience(data.id)} type='button' className='delete-btn'><i className='fa-solid fa-trash-can'></i></button>
                 </div>
               </div>
                 <input type='text' name='company' defaultValue={data.company} required />
@@ -31,7 +31,7 @@ export default function Experience({ experience, addExperience, deleteExperience
           <input type='text' name='start-date' placeholder='Start Date' required/>
           <input type='text' name='end-date' placeholder='End Date' required/>
           <textarea type='text' name='description' placeholder='Description' maxLength={800} required></textarea>
-          <button type='submit' className='add-btn' >+ Add</button>
+          <button type='submit' className='add-btn custom' >+ Add</button>
         </form>
         <form className='form' id='skills-form-container'>
         <h2>Skills</h2>

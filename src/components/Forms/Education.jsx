@@ -10,8 +10,8 @@ export default function Education({ education, addEducation, deleteEducation, up
               <div id='education-header'>
                 <h3>Education # {index + 1}</h3>
                 <div id='button-container'>
-                  <button type='submit' className='update-btn'><i className="fa-solid fa-floppy-disk"></i></button>
-                  <button onClick={() => deleteEducation(data.id)} type='button' className='delete-btn'><i className="fa-solid fa-trash-can"></i></button>
+                  <button type='submit' className='update-btn'><i className='fa-solid fa-floppy-disk'></i></button>
+                  <button onClick={() => deleteEducation(data.id)} type='button' className='delete-btn'><i className='fa-solid fa-trash-can'></i></button>
                 </div>
               </div>
                 <input type='text' name='degree' defaultValue={data.degree} required />
@@ -29,7 +29,7 @@ export default function Education({ education, addEducation, deleteEducation, up
           <input type='text' name='school-location' placeholder='Location' required/>
           <input type='text' name='start-date' placeholder='Start Date' required/>
           <input type='text' name='end-date' placeholder='Graduation Date' required/>
-          <button type='submit' className='add-btn'>+ Add</button>
+          <button type='submit' className='add-btn custom'>+ Add</button>
         </form>
       </div>
     </>

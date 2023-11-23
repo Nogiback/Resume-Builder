@@ -30,18 +30,10 @@ textarea {
 button {
   margin-top: 0.5rem;
   padding: 5px;
-  background-color: $teal;
-  color: $black;
   cursor: pointer;
   border-radius: 10px;
-  border: 2px solid $teal;
   transition: all 0.3s ease-in-out;
   position: relative;
-
-  &:hover {
-    color: $teal;
-    background-color: $black;
-  }
 
   &:active {
     top: 2px;
@@ -74,8 +66,16 @@ li {
   width: 100%;
 }
 
-.add-btn{
+.add-btn {
   width: 60px;
+  background-color: var(--custom-color);
+  color: $black;
+  border: 2px solid var(--custom-color);
+
+  &:hover {
+    color: var(--custom-color);
+    background-color: $black;
+  }
 }
 
 #education-header,
@@ -96,4 +96,32 @@ li {
   height: 20px;
   line-height: 0;
   margin: 0;
+  background-color: $lightgrey;
+  border: 2px solid $lightgrey;
+}
+
+.update-btn:hover{
+  background-color: $black;
+  color: rgb(24, 198, 38);
+}
+
+.delete-btn:hover{
+  background-color: $black;
+  color: red;
+}
+
+@media only screen and (max-width: 700px){
+  .form-container {
+    width: 320px;
+    background-color: $card;
+    box-shadow: $darkershadow;
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .form {
+    @include flex(column, space-between, center);
+    gap: 0.5rem;
+  }
+  
 }

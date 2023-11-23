@@ -4,7 +4,7 @@ export default function Footer() {
     <footer>
       <p>Built by Nogiback</p>
       <a href='https://github.com/Nogiback' target='_blank' rel='noreferrer'>
-        <i className='fab fa-github fa-spin fa-lg'></i>
+        <i className='fab fa-github fa-spin fa-lg custom'></i>
       </a>
     </footer>
     </>
