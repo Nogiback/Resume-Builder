@@ -99,7 +99,7 @@
 
 #sidebar-preview {
   grid-area: sidebar;
-  @include flex(column, center, flex-start);
+  @include flex(column, flex-start, flex-start);
   gap: 1rem;
 }
 
