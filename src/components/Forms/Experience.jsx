@@ -25,6 +25,7 @@ export default function Experience({ experience, addExperience, deleteExperience
           );
         })}
         <form onSubmit={addExperience} className='form' id='experience-form'>
+          <h3>Add Experience</h3>
           <input type='text' name='company' placeholder='Company' required />
           <input type='text' name='position' placeholder='Position' required/>
           <input type='text' name='company-location' placeholder='Location' required/>

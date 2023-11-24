@@ -20,7 +20,6 @@ export default function Content() {
   const [experience, setExperience] = useState([]);
   const [skills, setSkills] = useState('');
 
-
   function addEducation(e) {
     e.preventDefault()
     if (education.length === 3) return;

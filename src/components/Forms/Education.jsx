@@ -24,6 +24,7 @@ export default function Education({ education, addEducation, deleteEducation, up
           );
         })}
         <form onSubmit={addEducation} className='form'>
+          <h3>Add Experience</h3>
           <input type='text' name='degree' placeholder='Degree/Diploma' required />
           <input type='text' name='school' placeholder='University/School' required/>
           <input type='text' name='school-location' placeholder='Location' required/>
