@@ -43,11 +43,11 @@ export default function Content() {
 
   function updateEducation(e, id) {
     e.preventDefault();
-    const degree = e.target[0].value;
-    const school = e.target[1].value;
-    const location = e.target[2].value;
-    const startDate = e.target[3].value;
-    const gradDate = e.target[4].value;
+    const degree = e.target[2].value;
+    const school = e.target[3].value;
+    const location = e.target[4].value;
+    const startDate = e.target[5].value;
+    const gradDate = e.target[6].value;
     const updatedEducation = { degree, school, location, startDate, gradDate };
 
     setEducation(
