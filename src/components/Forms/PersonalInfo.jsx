@@ -1,23 +1,23 @@
-export default function PersonalInfo({ changeFirstName, changeLastName, changePhoneNumber, changeEmail, changeLocation, changeCurrentPosition, changeWebsite, changeBio, changeInterests }) {
+export default function PersonalInfo({ personalInfo, updatePersonalInfo, interests, updateInterests }) {
   return (
     <>
       <div className='form-container' id='personal-info-form-container'>
         <h2>Personal Info</h2>
         <form className='form' id='personal-info-form'>
           <div className='personal-info-name'>
-            <input onChange={(e) => changeFirstName(e.target.value)} type='text' name='first-name' placeholder='First Name' required />
-            <input onChange={(e) => changeLastName(e.target.value)} type='text' name='last-name' placeholder='Last Name' required />
+            <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.firstName} type='text' name='firstName' placeholder='First Name' required />
+            <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.lastName} type='text' name='lastName' placeholder='Last Name' required />
           </div>
           <div className='personal-info-contact'>
-            <input onChange={(e) => changePhoneNumber(e.target.value)} type='tel' name='phone-number' placeholder='Phone Number' required />
-            <input onChange={(e) => changeEmail(e.target.value)} type='email' name='email' placeholder='Email' required />
+            <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.phoneNumber} type='tel' name='phoneNumber' placeholder='Phone Number' required />
+            <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.email} type='email' name='email' placeholder='Email' required />
           </div>
-          <input onChange={(e) => changeLocation(e.target.value)} type='text' name='location' placeholder='Location' required />
-          <input onChange={(e) => changeCurrentPosition(e.target.value)} type='text' name='current-position' placeholder='Current Position' required />
-          <input onChange={(e) => changeWebsite(e.target.value)} type='text' name='website' placeholder='Website' required/>
-          <textarea onChange={(e) => changeBio(e.target.value)} type='text' name='bio' placeholder='Write a short bio...' maxLength={250} required></textarea>
+          <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.location} type='text' name='location' placeholder='Location' required />
+          <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.currentPosition} type='text' name='currentPosition' placeholder='Current Position' required />
+          <input onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.website} type='text' name='website' placeholder='Website' required/>
+          <textarea onChange={(e) => updatePersonalInfo(e)} defaultValue={personalInfo.bio} type='text' name='bio' placeholder='Write a short bio...' maxLength={250} required></textarea>
           <h2>Interests</h2>
-          <textarea onChange={(e) => changeInterests(e.target.value)} type='text' name='interests' placeholder='Hiking, basketball, movies, etc...' maxLength={500} required></textarea>
+          <textarea onChange={(e) => updateInterests(e.target.value)} defaultValue={interests} type='text' name='interests' placeholder='Hiking, basketball, movies, etc...' maxLength={500} required></textarea>
         </form>
       </div>
     </>

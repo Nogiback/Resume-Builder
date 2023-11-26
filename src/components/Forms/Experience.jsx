@@ -1,4 +1,4 @@
-export default function Experience({ experience, addExperience, deleteExperience, updateExperience, changeSkills }) {
+export default function Experience({ experience, addExperience, deleteExperience, updateExperience, skills, updateSkills }) {
   return (
     <>
       <div className='form-container' id='experience-form-container'>
@@ -6,20 +6,19 @@ export default function Experience({ experience, addExperience, deleteExperience
         {experience.map((data, index) => {
           return (
             <li key={data.id}>
-              <form onSubmit={(e) => updateExperience(e, data.id)} className='form'>
+              <form className='form'>
               <div id='experience-header'>
                 <h3>Work Experience # {index + 1}</h3>
                 <div id='button-container'>
-                  <button type='submit' className='update-btn'><i className='fa-solid fa-floppy-disk'></i></button>
                   <button onClick={() => deleteExperience(data.id)} type='button' className='delete-btn'><i className='fa-solid fa-trash-can'></i></button>
                 </div>
               </div>
-                <input type='text' name='company' defaultValue={data.company} required />
-                <input type='text' name='position' defaultValue={data.position} required/>
-                <input type='text' name='company-location' defaultValue={data.location} required/>
-                <input type='text' name='start-date' defaultValue={data.startDate} required/>
-                <input type='text' name='end-date' defaultValue={data.endDate} required/>
-                <textarea type='text' name='description' defaultValue={data.desc} maxLength={750} required></textarea>
+                <input onChange={(e) => updateExperience(e, data.id)} type='text' name='company' defaultValue={data.company} required />
+                <input onChange={(e) => updateExperience(e, data.id)} type='text' name='position' defaultValue={data.position} required/>
+                <input onChange={(e) => updateExperience(e, data.id)} type='text' name='expLocation' defaultValue={data.expLocation} required/>
+                <input onChange={(e) => updateExperience(e, data.id)} type='text' name='startDate' defaultValue={data.startDate} required/>
+                <input onChange={(e) => updateExperience(e, data.id)} type='text' name='endDate' defaultValue={data.endDate} required/>
+                <textarea onChange={(e) => updateExperience(e, data.id)} type='text' name='desc' defaultValue={data.desc} maxLength={750} required></textarea>
               </form>
             </li>
           );
@@ -36,7 +35,7 @@ export default function Experience({ experience, addExperience, deleteExperience
         </form>
         <form className='form' id='skills-form-container'>
         <h2>Skills</h2>
-          <textarea onChange={(e) => changeSkills(e.target.value)} type='text' name='interests' placeholder='HTML, CSS, Javascript, React, etc...' maxLength={500} required></textarea>
+          <textarea onChange={(e) => updateSkills(e.target.value)} defaultValue={skills} type='text' name='interests' placeholder='HTML, CSS, Javascript, React, etc...' maxLength={500} required></textarea>
         </form>
       </div>
     </>

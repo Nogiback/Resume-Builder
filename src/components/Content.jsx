@@ -7,18 +7,27 @@ import Experience from './Forms/Experience';
 import Resume from './Preview/Resume';
 
 export default function Content() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [bio, setBio] = useState('');
-  const [currentPosition, setCurrentPosition] = useState('');
-  const [location, setLocation] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [website, setWebsite] = useState('');
+  const [personalInfo, setPersonalInfo] = useState({
+    firstName: '',
+    lastName: '',
+    bio: '',
+    currentPosition: '',
+    location: '',
+    email: '',
+    phoneNumber: '',
+    website: '',
+  });
   const [interests, setInterests] = useState('');
   const [education, setEducation] = useState([]);
   const [experience, setExperience] = useState([]);
   const [skills, setSkills] = useState('');
+
+  function handlePersonalChange(e) {
+    setPersonalInfo({
+      ...personalInfo,
+      [e.target.name]: e.target.value
+    });
+  }
 
   function addEducation(e) {
     e.preventDefault()
@@ -26,10 +35,10 @@ export default function Content() {
     const id = uuidv4();
     const degree = e.target[0].value;
     const school = e.target[1].value;
-    const location = e.target[2].value;
-    const startDate = e.target[3].value;
+    const eduLocation = e.target[2].value;
+    const eduStartDate = e.target[3].value;
     const gradDate = e.target[4].value;
-    const newEducation = { id, degree, school, location, startDate, gradDate };
+    const newEducation = { id, degree, school, eduLocation, eduStartDate, gradDate };
     setEducation([...education, newEducation]);
     e.target.reset();
   }
@@ -41,23 +50,14 @@ export default function Content() {
   }
 
   function updateEducation(e, id) {
-    e.preventDefault();
-    const degree = e.target[2].value;
-    const school = e.target[3].value;
-    const location = e.target[4].value;
-    const startDate = e.target[5].value;
-    const gradDate = e.target[6].value;
-    const updatedEducation = { degree, school, location, startDate, gradDate };
-
-    setEducation(
-      education.map((data) => {
-        if (data.id === id) {
-          return {...data, ...updatedEducation};
-        } else {
-          return data;
-        }
-      })
-    );
+    const { name, value } = e.target;
+    setEducation(education.map(edu => {
+      if (edu.id === id) {
+        return { ...edu, [name]: value};
+      } else {
+        return edu;
+      }
+    }));
   }
 
   function addExperience(e) {
@@ -66,11 +66,11 @@ export default function Content() {
     const id = uuidv4();
     const company = e.target[0].value;
     const position = e.target[1].value;
-    const location = e.target[2].value;
+    const expLocation = e.target[2].value;
     const startDate = e.target[3].value;
     const endDate = e.target[4].value;
     const desc = e.target[5].value;
-    const newExperience = { id, company, position, location, startDate, endDate, desc };
+    const newExperience = { id, company, position, expLocation, startDate, endDate, desc };
     setExperience([...experience, newExperience]);
     e.target.reset();
   }
@@ -82,35 +82,29 @@ export default function Content() {
   }
 
   function updateExperience(e, id) {
-    e.preventDefault();
-    const company = e.target[2].value;
-    const position = e.target[3].value;
-    const location = e.target[4].value;
-    const startDate = e.target[5].value;
-    const endDate = e.target[6].value;
-    const desc = e.target[7].value;
-    const updatedExperience= { company, position, location, startDate, endDate, desc };
-
-    setExperience(
-      experience.map((data) => {
-        if (data.id === id) {
-          return {...data, ...updatedExperience};
-        } else {
-          return data;
-        }
-      })
-    );
+    const { name, value } = e.target;
+    setExperience(experience.map(exp => {
+      if (exp.id === id) {
+        return { ...exp, [name]: value};
+      } else {
+        return exp;
+      }
+    }));
   }
 
   function resetForms() {
-    setFirstName('');
-    setLastName('');
-    setBio('');
-    setCurrentPosition('');
-    setLocation('');
-    setEmail('');
-    setPhoneNumber('');
-    setWebsite('');
+    const personalForm = document.getElementById('personal-info-form');
+    personalForm.reset();
+    setPersonalInfo({
+      firstName: '',
+      lastName: '',
+      bio: '',
+      currentPosition: '',
+      location: '',
+      email: '',
+      phoneNumber: '',
+      website: '',
+    });
     setInterests('');
     setSkills('');
     setEducation([]);
@@ -119,19 +113,21 @@ export default function Content() {
 
   function loadExample() {
     resetForms();
-    setFirstName('John');
-    setLastName('Doe');
-    setCurrentPosition('Tech Lead');
-    setEmail('johndoe@email.com');
-    setLocation('Toronto, ON');
-    setPhoneNumber('123-456-7890');
-    setWebsite('www.doedeveloper.com');
-    setBio('I am a full stack web developer with a passion for clean and minimal designs.')
+    setPersonalInfo({
+      firstName: 'John',
+      lastName: 'Doe',
+      bio: 'I am a full stack web developer with a passion for clean and minimal designs.',
+      currentPosition: 'Tech Lead',
+      location: 'Toronto, ON',
+      email: 'johndoe@gmail.com',
+      phoneNumber: '123-456-7890',
+      website: 'www.doedeveloper.com',
+    });
     const exampleExp1 = {
       id: uuidv4(),
       company: 'Spotify',
       position: 'Tech Lead',
-      location: 'Remote',
+      expLocation: 'Remote',
       startDate: 'April 2022',
       endDate: 'Present',
       desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
@@ -140,7 +136,7 @@ export default function Content() {
       id: uuidv4(),
       company: 'Facebook',
       position: 'Sr. Web Developer',
-      location: 'Toronto, ON',
+      expLocation: 'Toronto, ON',
       startDate: 'August 2019',
       endDate: 'April 2022',
       desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
@@ -149,7 +145,7 @@ export default function Content() {
       id: uuidv4(),
       company: 'Start Up Company',
       position: 'Jr. Web Developer',
-      location: 'Toronto, ON',
+      expLocation: 'Toronto, ON',
       startDate: 'August 2018',
       endDate: 'August 2019',
       desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
@@ -158,16 +154,16 @@ export default function Content() {
       id: uuidv4(),
       degree: 'B.S. Computer Science',
       school: 'University of Toronto',
-      location: 'Toronto, ON',
-      startDate: 'September 2012',
+      eduLocation: 'Toronto, ON',
+      eduStartDate: 'September 2012',
       gradDate: 'May 2016',
     };
     const exampleEdu2 = {
       id: uuidv4(),
       degree: 'M.S. Computer Science',
       school: 'Harvard University',
-      location: 'Boston, USA',
-      startDate: 'September 2016',
+      eduLocation: 'Boston, USA',
+      eduStartDate: 'September 2016',
       gradDate: 'August 2018',
     };
     setSkills('Javascript, Typescript, HTML, CSS, Sass, PHP, React, Next.js, Gatsby, Tailwind, Git, Github, Vercel, Heroku, Docker, Webpack, Firebase, Figma');
@@ -181,16 +177,11 @@ export default function Content() {
       <div className='content'>
         <section className='forms-section'>
           <Buttons loadExample={loadExample} resetForms={resetForms}/>
-          <PersonalInfo 
-            changeFirstName={setFirstName}
-            changeLastName={setLastName}
-            changePhoneNumber={setPhoneNumber}
-            changeEmail={setEmail}
-            changeLocation={setLocation}
-            changeCurrentPosition={setCurrentPosition}
-            changeWebsite={setWebsite}
-            changeBio={setBio}
-            changeInterests={setInterests}
+          <PersonalInfo
+            personalInfo={personalInfo}
+            updatePersonalInfo={handlePersonalChange}
+            interests={interests}
+            updateInterests={setInterests}
            />
           <Education 
             education={education}
@@ -203,19 +194,13 @@ export default function Content() {
             addExperience={addExperience}
             deleteExperience={deleteExperience}
             updateExperience={updateExperience}
-            changeSkills={setSkills}
+            skills={skills}
+            updateSkills={setSkills}
           />
         </section>
         <section className='resume-preview'>
           <Resume
-            firstName={firstName}
-            lastName={lastName}
-            phoneNumber={phoneNumber}
-            email={email}
-            location={location}
-            currentPosition={currentPosition}
-            website={website}
-            bio={bio}
+            personalInfo={personalInfo}
             interests={interests}
             education={education}
             experience={experience}

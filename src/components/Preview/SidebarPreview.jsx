@@ -13,8 +13,8 @@ export default function SidebarPreview({skills, education, interests}) {
             <li key={data.id} className='education-entry'>
               <h4 id='school-label'>{data.school}</h4>
               <h5 id='degree-label'>{data.degree}</h5>
-              <h5 id='edu-date-label'>{data.startDate} - {data.gradDate}</h5>
-              <h5 id='location-label'>{data.location}</h5>
+              <h5 id='edu-date-label'>{data.eduStartDate} - {data.gradDate}</h5>
+              <h5 id='location-label'>{data.eduLocation}</h5>
             </li>
           );
         })}
